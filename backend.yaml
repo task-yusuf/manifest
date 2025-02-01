@@ -27,7 +27,7 @@ spec:
         - name: DB_USER
           value: "root"
         - name: DB_NAME
-          value: todo-app
+          value: "todo-app"
         - name: CLOUD_SDK_AK
           valueFrom:
             secretKeyRef:
