@@ -19,6 +19,8 @@ spec:
       - name: todo-backend
         image: swr.tr-west-1.myhuaweicloud.com/task_organization/backend:13091383342
         imagePullPolicy: Always
+        imagePullSecrets:
+        - name: swr-registry-secret
         ports:
         - containerPort: 3000
         env:
