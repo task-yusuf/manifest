@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: todo-backend
-        image: backend:latest
+        image: swr.tr-west-1.myhuaweicloud.com/task_organization/backend:13091383342
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
