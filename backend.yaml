@@ -31,23 +31,23 @@ spec:
         - name: CLOUD_SDK_AK
           valueFrom:
             secretKeyRef:
-            name: backend-secret  
-            key: CLOUD_SDK_AK
+              name: backend-secret  
+              key: CLOUD_SDK_AK
         - name: CLOUD_SDK_SK
           valueFrom:
             secretKeyRef:
-            name: backend-secret  
-            key: CLOUD_SDK_SK
+              name: backend-secret  
+              key: CLOUD_SDK_SK
         - name: CLOUD_SDK_ENDPOINT
           valueFrom:
             secretKeyRef:
-            name: backend-secret  
-            key: CLOUD_SDK_ENDPOINT
+              name: backend-secret  
+              key: CLOUD_SDK_ENDPOINT
         - name: CLOUD_PROJECT_ID
           valueFrom:
             secretKeyRef:
-            name: backend-secret  
-            key: CLOUD_PROJECT_ID
+              name: backend-secret  
+              key: CLOUD_PROJECT_ID
         resources:
           requests:
             memory: "128Mi"
