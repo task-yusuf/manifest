@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: todo-frontend
-        image: swr.tr-west-1.myhuaweicloud.com/task_organization/frontend:13091549291
+        image: swr.tr-west-1.myhuaweicloud.com/task_organization/frontend:13091931482
         imagePullPolicy: Always
         ports:
         - containerPort: 80
