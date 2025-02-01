@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend
+  namespace: todo-app
+  labels:
+    app: todo-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-backend
+  template:
+    metadata:
+      labels:
+        app: todo-backend
+    spec:
+      containers:
+      - name: todo-backend
+        image: backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: "10.0.1.2"
+        - name: DB_USER
+          value: "root"
+        - name: DB_NAME
+          value: todo-app
+        - name: CLOUD_SDK_AK
+          valueFrom:
+            secretKeyRef:
+            name: backend-secret  
+            key: CLOUD_SDK_AK
+        - name: CLOUD_SDK_SK
+          valueFrom:
+            secretKeyRef:
+            name: backend-secret  
+            key: CLOUD_SDK_SK
+        - name: CLOUD_SDK_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+            name: backend-secret  
+            key: CLOUD_SDK_ENDPOINT
+        - name: CLOUD_PROJECT_ID
+          valueFrom:
+            secretKeyRef:
+            name: backend-secret  
+            key: CLOUD_PROJECT_ID
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-backend-service
+  namespace: todo-app
+spec:
+  type: ClusterIP
+  selector:
+    app: todo-backend
+  ports:
+  - port: 80
+    targetPort: 3000
+  
+
